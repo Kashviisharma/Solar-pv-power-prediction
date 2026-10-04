@@ -1,7 +1,7 @@
 // dashboard/src/api.js
 // All fetch calls go through the Vite /api proxy → FastAPI :8000
 
-const BASE = '/api'
+const BASE = import.meta.env.VITE_API_URL || '/api'
 
 export async function fetchHealth() {
   const r = await fetch(`${BASE}/health`)
