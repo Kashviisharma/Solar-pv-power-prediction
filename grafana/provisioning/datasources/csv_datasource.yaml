@@ -1,0 +1,11 @@
+apiVersion: 1
+
+datasources:
+  - name: SolarPV_CSV
+    type: marcusolsson-csv-datasource
+    access: proxy
+    orgId: 1
+    url: /var/lib/grafana/data/processed    # mount data/processed/ here
+    editable: true
+    jsonData:
+      storage: local

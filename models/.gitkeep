@@ -1,0 +1,2 @@
+# This directory stores trained model files
+# .joblib files are git-ignored but the directory structure is tracked

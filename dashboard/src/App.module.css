@@ -1,0 +1,353 @@
+/* App.module.css — Solar PV Dashboard */
+
+/* ── Shell layout ──────────────────────────────────────────────────────────── */
+.shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* ── Sidebar ───────────────────────────────────────────────────────────────── */
+.sidebar {
+  width: 180px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.sidebarLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 16px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logoIcon {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: #f59e0b22;
+  color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.logoName { font-size: 13px; font-weight: 700; color: var(--text); }
+.logoSub  { font-size: 10px; color: var(--muted); }
+
+.nav { flex: 1; padding: 12px 8px; display: flex; flex-direction: column; gap: 2px; }
+
+.navItem {
+  display: flex; align-items: center; gap: 9px;
+  width: 100%; padding: 9px 10px;
+  border: none; background: transparent;
+  color: var(--muted); font-size: 13px; font-weight: 500;
+  border-radius: 8px; cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  position: relative;
+}
+.navItem:hover { background: var(--card2); color: var(--text); }
+.navActive { background: var(--accent) !important; color: #fff !important; }
+.navArrow { margin-left: auto; }
+
+.sidebarFooter {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.leafIcon { font-size: 22px; }
+
+/* ── Main area ─────────────────────────────────────────────────────────────── */
+.main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+/* ── Topbar ────────────────────────────────────────────────────────────────── */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px;
+  height: 60px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.topTitle { font-size: 15px; font-weight: 700; color: var(--text); }
+.topSub   { font-size: 11px; color: var(--muted); }
+
+.topRight { display: flex; align-items: center; gap: 14px; }
+
+.statusBadge {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600;
+  padding: 4px 10px; border-radius: 20px;
+}
+.online  { background: #10b98120; color: var(--accent2); border: 1px solid var(--accent2); }
+.offline { background: #ef444420; color: var(--red);     border: 1px solid var(--red);     }
+
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: currentColor; animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100% { opacity:1 } 50% { opacity:.4 } }
+
+.clock { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.refreshBtn {
+  background: var(--card2); border: 1px solid var(--border); color: var(--muted);
+  padding: 6px 8px; border-radius: 7px; cursor: pointer;
+  display: flex; align-items: center;
+  transition: color 0.15s, background 0.15s;
+}
+.refreshBtn:hover { color: var(--text); background: var(--border); }
+
+/* ── Content scroll area ───────────────────────────────────────────────────── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+}
+
+/* ── Center message / error ────────────────────────────────────────────────── */
+.centerMsg {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 12px; height: 200px; color: var(--muted);
+}
+
+.errorBanner {
+  display: flex; align-items: center; gap: 10px;
+  background: #ef444418; border: 1px solid var(--red); border-radius: 8px;
+  padding: 12px 16px; font-size: 13px; color: var(--red); margin-bottom: 16px;
+}
+.errorBanner button {
+  margin-left: auto; background: var(--red); color: #fff;
+  border: none; border-radius: 6px; padding: 5px 12px;
+  cursor: pointer; font-size: 12px;
+}
+
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Section title ─────────────────────────────────────────────────────────── */
+.sectionTitle {
+  font-size: 13px; font-weight: 600; color: var(--text);
+  border-left: 3px solid var(--accent);
+  padding-left: 8px; margin-bottom: 12px;
+}
+
+/* ── Dashboard grid ────────────────────────────────────────────────────────── */
+.dashGrid { display: flex; flex-direction: column; gap: 14px; }
+
+/* ── Stat cards row ────────────────────────────────────────────────────────── */
+.statsRow { display: grid; grid-template-columns: repeat(4, 1fr) 1.2fr; gap: 12px; }
+
+.statCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+
+.statIcon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.statBody { flex: 1; }
+.statLabel { font-size: 11px; color: var(--muted); margin-bottom: 3px; }
+.statValue { font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.1; }
+.statUnit  { font-size: 12px; font-weight: 400; color: var(--muted); }
+.statSub   { font-size: 11px; margin-top: 3px; }
+
+.statTrend {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
+  font-size: 11px; font-weight: 600;
+}
+
+/* performance mini card */
+.perfCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.perfTitle { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+.perfTable { width: 100%; border-collapse: collapse; font-size: 12px; }
+.perfTable td { padding: 3px 0; }
+.perfTable td:first-child { color: var(--muted); width: 50%; }
+.perfTable td:last-child   { color: var(--text); font-weight: 600; }
+.goodBadge {
+  background: #10b98122; color: var(--accent2);
+  border: 1px solid var(--accent2); border-radius: 10px;
+  font-size: 10px; padding: 1px 7px; margin-left: 6px;
+}
+
+/* ── Charts row 2 ──────────────────────────────────────────────────────────── */
+.chartsRow2 { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; }
+
+/* ── Charts row 3 ──────────────────────────────────────────────────────────── */
+.chartsRow3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+/* ── Generic chart card ────────────────────────────────────────────────────── */
+.chartCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+.chartWide { grid-column: span 1; }  /* handled by parent grid */
+
+/* ── Donut chart ───────────────────────────────────────────────────────────── */
+.donutRow { display: flex; align-items: center; gap: 8px; }
+.donutLegend { flex: 1; display: flex; flex-direction: column; gap: 6px; font-size: 12px; }
+.donutItem { display: flex; align-items: center; gap: 7px; }
+.donutDot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.donutPct { margin-left: auto; color: var(--muted); }
+
+/* ── Env list ──────────────────────────────────────────────────────────────── */
+.envList { display: flex; flex-direction: column; gap: 10px; }
+.envRow  { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.envLabel { flex: 1; color: var(--muted); }
+.envVal  { font-weight: 600; color: var(--text); }
+
+/* ── Bottom row ────────────────────────────────────────────────────────────── */
+.bottomRow { display: grid; grid-template-columns: 2fr 1.2fr 1fr; gap: 12px; }
+
+.tableCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex; flex-direction: column;
+}
+.tableWide { /* already handled by grid */ }
+
+.tableWrap { overflow-x: auto; flex: 1; }
+
+.table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.table th {
+  text-align: left; padding: 6px 8px;
+  color: var(--muted); font-weight: 500;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.table td {
+  padding: 6px 8px; color: var(--text);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: var(--card2); }
+
+/* model metrics list */
+.mmList { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.mmRow  { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-bottom: 1px solid var(--border); }
+.mmRow:last-child { border-bottom: none; }
+.mmKey { color: var(--muted); }
+.mmVal { color: var(--text); font-weight: 600; }
+
+.detailBtn {
+  display: flex; align-items: center; gap: 5px;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 7px;
+  padding: 8px 14px; font-size: 12px; font-weight: 600;
+  cursor: pointer; margin-top: 12px; width: 100%; justify-content: center;
+  transition: opacity 0.15s;
+}
+.detailBtn:hover { opacity: 0.85; }
+
+/* feature list */
+.featureList { display: flex; flex-direction: column; gap: 8px; }
+.featureItem { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text); }
+
+/* ── Page heading ──────────────────────────────────────────────────────────── */
+.pageHeading { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 20px; }
+
+/* ── Predict page ──────────────────────────────────────────────────────────── */
+.predictPage { max-width: 1000px; }
+.predictLayout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.predictForm {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.formDesc { font-size: 13px; color: var(--muted); }
+.formField { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); font-weight: 500; }
+.sliderRow { display: flex; align-items: center; gap: 12px; }
+.sliderRow input[type=range] {
+  flex: 1;
+  accent-color: var(--accent);
+  height: 5px; cursor: pointer;
+}
+.sliderVal { width: 50px; text-align: right; color: var(--text); font-weight: 600; font-size: 14px; }
+
+.predictBtn {
+  background: linear-gradient(135deg, var(--gold), #d97706);
+  color: #0b1120; font-weight: 700; font-size: 14px;
+  border: none; border-radius: 8px; padding: 12px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: opacity 0.15s;
+}
+.predictBtn:hover { opacity: 0.88; }
+.predictBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+.predErr { color: var(--red); font-size: 12px; display: flex; align-items: center; gap: 6px; }
+
+.predictResult {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.bigPower {
+  text-align: center; padding: 24px;
+  background: linear-gradient(135deg, #0d4f3c, #064e3b);
+  border: 1px solid var(--accent2); border-radius: 10px;
+}
+.bigPowerLabel { font-size: 13px; color: #6ee7b7; margin-bottom: 8px; }
+.bigPowerValue { font-size: 3rem; font-weight: 800; color: var(--accent2); line-height: 1; }
+.bigPowerSub   { font-size: 12px; color: #6ee7b7; margin-top: 8px; }
+
+.predPlaceholder {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 16px; color: var(--muted); text-align: center; font-size: 13px; padding: 40px;
+}
+
+.inputSummary { display: flex; flex-direction: column; gap: 6px; }
+.summaryRow {
+  display: flex; justify-content: space-between; font-size: 13px;
+  padding: 5px 0; border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+.summaryRow span:last-child { color: var(--text); font-weight: 600; }
+
+/* ── Info / model page ─────────────────────────────────────────────────────── */
+.infoPage  { max-width: 1200px; }
+.infoGrid  { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.infoCard  {
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.infoCard h4 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px;
+  border-left: 3px solid var(--accent); padding-left: 8px; }
+.infoCardWide { grid-column: span 2; }
+
+/* ── Explorer page ─────────────────────────────────────────────────────────── */
+.explorerGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.explorerChart { /* already styled as .chartCard */ }
+.explorerTable { grid-column: span 2; }
+
+/* ── Settings ──────────────────────────────────────────────────────────────── */
+.settingsCard {
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; max-width: 600px; display: flex; flex-direction: column; gap: 0;
+}
+.settingRow {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 13px;
+}
+.settingRow:last-child { border-bottom: none; }
+.settingRow span:first-child { color: var(--muted); }
+.settingRow code { background: var(--card2); color: var(--accent); padding: 3px 8px; border-radius: 5px; font-size: 12px; }

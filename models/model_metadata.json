@@ -1,0 +1,42 @@
+{
+  "model_name": "Random Forest",
+  "model_version": "1.0",
+  "features": [
+    "irradiance",
+    "ambient_temperature",
+    "panel_temperature",
+    "wind_speed"
+  ],
+  "metrics": {
+    "mae": 0.006604143188139087,
+    "rmse": 0.013139439633033741,
+    "r2": 0.9975175569890484
+  },
+  "all_metrics": {
+    "Linear Regression": {
+      "mae": 0.011457039911814161,
+      "rmse": 0.01715489416875687,
+      "r2": 0.9957684284783389
+    },
+    "Random Forest": {
+      "mae": 0.006604143188139087,
+      "rmse": 0.013139439633033741,
+      "r2": 0.9975175569890484
+    },
+    "XGBoost": {
+      "mae": 0.007338919925420769,
+      "rmse": 0.013906900963189401,
+      "r2": 0.997219093910549
+    }
+  },
+  "train_samples": 28108,
+  "test_samples": 7028,
+  "train_date_range": {
+    "start": "2012-01-01 00:00:00+00:00",
+    "end": "2012-10-19 18:45:00+00:00"
+  },
+  "test_date_range": {
+    "start": "2012-10-19 19:00:00+00:00",
+    "end": "2012-12-31 23:45:00+00:00"
+  }
+}
