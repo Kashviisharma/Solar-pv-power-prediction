@@ -35,10 +35,11 @@ venv.bak/
 
 # Raw data — do NOT commit large raw datasets
 data/raw/
-data/processed/
+data/processed/*
+!data/processed/predictions_time_series.csv
 
 # Trained model binaries — can be large; regenerate via train.py
-models/*.joblib
+
 
 # BUT keep model metadata in git
 !models/model_metadata.json
@@ -74,3 +75,7 @@ logs/
 # OS
 .DS_Store
 desktop.ini
+
+#React
+dashboard/node_modules/
+dashboard/dist/
